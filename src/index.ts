@@ -61,7 +61,7 @@ export default class Entity<EntityType, Identifiers extends string> {
    *
    * @returns {Record<Identifiers, EntityType>} A record of all entities in the entity map.
    */
-  public getAllEntities() {
+  public getAllEntities(): Record<Identifiers, EntityType> {
     const entities = {} as Record<Identifiers, EntityType>;
     this.entitySymbols.forEach((symbol, identifier) => {
       entities[identifier] = this.entityMap.get(symbol) as EntityType;
@@ -74,7 +74,7 @@ export default class Entity<EntityType, Identifiers extends string> {
    *
    * @returns {Identifiers[]} An array of all identifiers in the entity map.
    */
-  public getAllIdentifiers() {
+  public getAllIdentifiers(): Identifiers[] {
     return Array.from(this.entitySymbols.keys());
   }
 
@@ -83,7 +83,7 @@ export default class Entity<EntityType, Identifiers extends string> {
    *
    * @returns {symbol[]} An array of all symbols in the entity map.
    */
-  public getAllSymbols() {
+  public getAllSymbols(): symbol[] {
     return Array.from(this.entityMap.keys());
   }
 
@@ -92,7 +92,7 @@ export default class Entity<EntityType, Identifiers extends string> {
    *
    * @returns {number} The number of entities in the entity map.
    */
-  public size() {
+  public size(): number {
     return this.entityMap.size;
   }
 
@@ -101,7 +101,7 @@ export default class Entity<EntityType, Identifiers extends string> {
    *
    * @returns {boolean} True if the entity map is empty, false otherwise.
    */
-  public isEmpty() {
+  public isEmpty(): boolean {
     return this.entityMap.size === 0;
   }
 
@@ -111,7 +111,7 @@ export default class Entity<EntityType, Identifiers extends string> {
    * @param {Identifiers} identifier - The identifier of the entity to check.
    * @returns {boolean} True if the entity exists, false otherwise.
    */
-  public has(identifier: Identifiers) {
+  public has(identifier: Identifiers): boolean {
     return this.entitySymbols.has(identifier);
   }
 
@@ -155,6 +155,23 @@ export default class Entity<EntityType, Identifiers extends string> {
     this.entitySymbols.forEach((symbol, identifier) => {
       if (callback.call(thisArg, this.entityMap.get(symbol) as EntityType, identifier, this.entityMap)) {
         result.push(this.entityMap.get(symbol) as EntityType);
+      }
+    });
+    return result;
+  }
+
+  /**
+   * find implementation for the entity map.
+   * 
+   * @param {Function} callback - The function to call for each entity.
+   * @param {any} thisArg - The value to use as `this` when executing the callback.
+   * @returns {EntityType | undefined}
+   */
+  public find(callback: (entity: EntityType, identifier: Identifiers, entityMap: Map<symbol, EntityType>) => boolean, thisArg?: any): EntityType | undefined {
+    let result: EntityType | undefined;
+    this.entitySymbols.forEach((symbol, identifier) => {
+      if (callback.call(thisArg, this.entityMap.get(symbol) as EntityType, identifier, this.entityMap)) {
+        result = this.entityMap.get(symbol) as EntityType;
       }
     });
     return result;
