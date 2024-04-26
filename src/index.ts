@@ -92,16 +92,15 @@ export default class Entity<EntityType, Identifiers extends string> {
    *
    * @returns {number} The number of entities in the entity map.
    */
-  public size(): number {
-    return this.entityMap.size;
-  }
+  public get size(): number { return this.entityMap.size; }
+  public get length(): number { return this.size; }
 
   /**
    * Checks if the entity map is empty.
    *
    * @returns {boolean} True if the entity map is empty, false otherwise.
    */
-  public isEmpty(): boolean {
+  public get isEmpty(): boolean {
     return this.entityMap.size === 0;
   }
 
