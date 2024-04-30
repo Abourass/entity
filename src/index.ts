@@ -8,6 +8,21 @@ export default class Entity<EntityType, Identifiers extends string> {
   private entitySymbols: Map<Identifiers, symbol> = new Map();
 
   /**
+   * Creates a new Entity instance.
+   *
+   * @param {Record<Identifiers, EntityType>} entities - An object containing entities to add to the entity map.
+   */
+  public constructor(entities?: Record<Identifiers, EntityType>) {
+    if (entities) {
+      Object
+        .entries(entities)
+        .forEach(([identifier, entity]) => {
+          this.add(identifier as Identifiers, entity as EntityType);
+        });
+    }
+  }
+
+  /**
    * Adds a new entity to the entity map.
    *
    * @param {Identifiers} identifier - The string identifier for the entity.
