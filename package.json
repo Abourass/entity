@@ -12,7 +12,8 @@
     "@types/eslint__js": "^8.42.3",
     "eslint": "^9.1.1",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.8.0"
+    "typescript-eslint": "^7.8.0",
+    "vitest": "^1.5.3"
   },
   "packageManager": "yarn@4.1.1"
 }
