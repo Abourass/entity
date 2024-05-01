@@ -1,7 +1,7 @@
 {
   "name": "@anandamideio/entity",
   "main": "dist/index.js",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
@@ -14,6 +14,15 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0",
     "vitest": "^1.5.3"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 140,
+    "tabs": false,
+    "quoteProps": "consistent"
   },
   "packageManager": "yarn@4.1.1"
 }

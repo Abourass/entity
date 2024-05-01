@@ -3,7 +3,7 @@
  *
  * @template EntityType - The type of the entity.
  */
-export default class Entity<EntityType, Identifiers extends string> {
+export default class Entity<EntityType = any, Identifiers extends string = string> {
   private entityMap: Map<symbol, EntityType> = new Map();
   private entitySymbols: Map<Identifiers, symbol> = new Map();
 
