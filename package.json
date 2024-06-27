@@ -1,7 +1,7 @@
 {
   "name": "@anandamideio/entity",
   "main": "dist/index.js",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "iterate": "npm version patch && git push origin main --tags && npm publish --access public"
