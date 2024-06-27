@@ -3,17 +3,18 @@
   "main": "dist/index.js",
   "version": "1.4.1",
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "iterate": "npm version patch && git push origin main --tags && npm publish --access public"
   },
   "devDependencies": {
-    "@eslint/js": "^9.1.1",
-    "@magik_io/lint_golem": "^1.5.0",
+    "@eslint/js": "^9.5.0",
+    "@magik_io/lint_golem": "^2.2.1",
     "@types/eslint": "^8.56.10",
     "@types/eslint__js": "^8.42.3",
-    "eslint": "^9.1.1",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.8.0",
-    "vitest": "^1.5.3"
+    "eslint": "^9.5.0",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.14.1",
+    "vitest": "^1.6.0"
   },
   "prettier": {
     "trailingComma": "es5",
@@ -24,5 +25,5 @@
     "tabs": false,
     "quoteProps": "consistent"
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.3.1"
 }
